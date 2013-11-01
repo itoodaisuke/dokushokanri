@@ -45,3 +45,4 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'jquery-turbolinks'
+gem 'slim-rails'

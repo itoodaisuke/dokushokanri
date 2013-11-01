@@ -1,0 +1,23 @@
+h1 Listing books
+= form_for @search_form, url: books_path(format: :json), remote: true, html: {method: :get} do |f|
+  = f.search_field :q
+  = f.submit '検索'
+table
+  thead
+    tr
+      th Title
+      th Price
+      th Published On
+      th
+      th
+      th
+  tbody
+    = content_tag_for :tr, @books do |book|
+      td= book.title
+      td= book.price
+      td= book.published_on
+      td= link_to 'Show', book
+      td= link_to 'Edit', edit_book_path(book)
+      td= link_to 'Destroy', book, method: :delete, data: {confirm: 'Are you sure?'}
+br
+  = link_to 'New Book', new_book_path
