@@ -3,14 +3,29 @@ p
   strong Title:
   = @book.title
 p
-  strong Price:
-  = @book.price
+  strong Author:
+  = @book.author
+
 p
-  strong Published:
-  = @book.published_on
+  strong Publisher:
+  = @book.publisher
+
 p
   strong ISBN:
   = @book.isbn
+
+p
+  strong Start:
+  = @book.start
+
+p
+  strong End:
+  = @book.end
+
+p
+  strong Summary:
+  = @book.summary
+
 = link_to 'Edit', edit_book_path(@book)
 ||
 = link_to 'Back', books_path

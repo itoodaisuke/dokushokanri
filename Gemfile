@@ -12,6 +12,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
+gem 'simple_form', '~> 3.0.0'
 
 group :development, :test do
       gem 'sqlite3'
