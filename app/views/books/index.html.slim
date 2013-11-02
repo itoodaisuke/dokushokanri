@@ -8,6 +8,7 @@ table
       th Title
       th Price
       th Published On
+      th ISBN
       th
       th
       th
@@ -16,6 +17,7 @@ table
       td= book.title
       td= book.price
       td= book.published_on
+      td= book.isbn
       td= link_to 'Show', book
       td= link_to 'Edit', edit_book_path(book)
       td= link_to 'Destroy', book, method: :delete, data: {confirm: 'Are you sure?'}
