@@ -6,6 +6,7 @@ class BooksController < ApplicationController
   def index
     @search_form = SearchForm.new params[:search_form]
     @books = Book.all
+    @publishers= Publisher.all
     if @search_form.q.present?
       @books = @books.titled @search_form.q
     end
@@ -19,6 +20,7 @@ class BooksController < ApplicationController
   # GET /books/new
   def new
     @book = Book.new
+    @publisher= Publisher.new
   end
 
   # GET /books/1/edit

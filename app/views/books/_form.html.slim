@@ -9,4 +9,6 @@
           li= msg
   =f.input :title
   =f.input :isbn
+  =f.simple_fields_for :publisher |f|
+    =f.input :name
   =f.submit t('New Book')

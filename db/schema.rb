@@ -11,11 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131106061835) do
+ActiveRecord::Schema.define(version: 20131106063606) do
 
   create_table "books", force: true do |t|
     t.string "title"
     t.string "isbn"
   end
+
+  create_table "publishers", force: true do |t|
+    t.integer  "book_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "publishers", ["book_id"], name: "index_publishers_on_book_id"
 
 end
