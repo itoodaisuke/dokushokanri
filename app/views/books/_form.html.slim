@@ -8,10 +8,5 @@
         - @book.errors.full_messages.each do |msg|
           li= msg
   =f.input :title
-  =f.input :author
-  =f.input :publisher
-  =f.input :isbn, input_html: {as: :number}
-  =f.input :start, input_html: {as: :date}
-  =f.input :end, input_html: {as: :date}
-  =f.input :summary, input_html: {row: 10}
+  =f.input :isbn
   =f.submit t('New Book')
