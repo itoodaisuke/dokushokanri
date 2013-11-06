@@ -6,7 +6,6 @@ class BooksController < ApplicationController
   def index
     @search_form = SearchForm.new params[:search_form]
     @books = Book.all
-    @publishers= Publisher.all
     if @search_form.q.present?
       @books = @books.titled @search_form.q
     end
@@ -20,7 +19,11 @@ class BooksController < ApplicationController
   # GET /books/new
   def new
     @book = Book.new
-    @publisher= Publisher.new
+    @book.build_publisher
+
+    respond_to do |format|
+      format.html
+    end
   end
 
   # GET /books/1/edit
@@ -75,6 +78,6 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:title, :author, :publisher, :isbn, :start, :end, :summary)
+      params.require(:book).permit(:title, :isbn, :publisher_attributes)
     end
 end
