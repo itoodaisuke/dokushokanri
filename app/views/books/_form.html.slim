@@ -1,4 +1,4 @@
-= simple_form_for @book do |f|
+= form_for @book do |f|
   - if @book.errors.any?
     #error_explanation
       h2
@@ -7,11 +7,11 @@
       ul
         - @book.errors.full_messages.each do |msg|
           li= msg
-  =f.input :title
-  =f.input :author
-  =f.input :publisher
-  =f.input :isbn, input_html: {as: :number}
-  =f.input :start, input_html: {as: :date}
-  =f.input :end, input_html: {as: :date}
-  =f.input :summary, input_html: {row: 10}
+  = f.label :title
+  = f.text_field :title
+  = f.label :isbn
+  = f.text_field :isbn
+  = f.fields_for :publisher do |f_publisher|
+    = f_publisher.label :name
+    = f_publisher.text_field :name
   =f.submit t('New Book')
