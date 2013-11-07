@@ -11,7 +11,7 @@
   = f.text_field :title
   = f.label :isbn
   = f.text_field :isbn
-  = f.fields_for :publisher |f_publisher|
+  = f.fields_for :publishers do |f_publisher|
     = f_publisher.label :name
     = f_publisher.text_field :name
   =f.submit t('New Book')
