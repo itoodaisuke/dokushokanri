@@ -16,6 +16,7 @@ table
     = content_tag_for :tr, @books do |book|
       td= book.title
       td= book.isbn
+      td= book.publisher[:name]
     = content_tag_for :tr, @publishers do |publisher|
       td= publisher.name
     = content_tag_for :tr, @books do |book|
