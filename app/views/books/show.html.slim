@@ -7,7 +7,7 @@ p
   = @book.isbn
 p
   strong Publisher:
-  = @book.publisher[:name]
+  = @book.publishers
 = link_to 'Edit', edit_book_path(@book)
 ||
 = link_to 'Back', books_path
