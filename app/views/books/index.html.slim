@@ -15,7 +15,11 @@ table
   tbody
     = content_tag_for :tr, @books do |book|
       td= book.title
+      td author
+      td= book.publishers.map(&:name).join(',')
       td= book.isbn
+      td
+      td
       td= link_to 'Show', book
       td= link_to 'Edit', edit_book_path(book)
       td= link_to 'Destroy', book, method: :delete, data: {confirm: 'Are you sure?'}

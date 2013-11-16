@@ -7,7 +7,9 @@ p
   = @book.isbn
 p
   strong Publisher:
-  = @book.publishers
+  ul
+    - @book.publishers.each do |publisher|
+      li= publisher.name
 = link_to 'Edit', edit_book_path(@book)
 ||
 = link_to 'Back', books_path
