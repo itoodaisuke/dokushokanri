@@ -9,6 +9,14 @@ class BooksController < ApplicationController
     if @search_form.q.present?
       @books = @books.titled @search_form.q
     end
+    @keyword = params[:keyword]
+    if @keyword.present?
+      Amazon::Ecs.debug = true
+      @res = Amazon::Ecs.item_search(params[:keyword], 
+          :search_index => 'All', :response_group => 'Medium')
+    else
+      return
+    end
   end
 
   # GET /books/1
@@ -23,6 +31,14 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       format.html
+    end
+    @keyword = params[:keyword]
+    if @keyword.present?
+      Amazon::Ecs.debug = true
+      @res = Amazon::Ecs.item_search(params[:keyword], 
+          :search_index => 'All', :response_group => 'Medium')
+    else
+      return
     end
   end
 

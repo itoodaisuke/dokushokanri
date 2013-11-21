@@ -13,6 +13,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'simple_form', '~> 3.0.0'
+gem 'amazon-ecs'
 
 group :development, :test do
       gem 'sqlite3'
