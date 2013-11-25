@@ -1,4 +1,4 @@
-= form_for @book do |f|
+/= form_for @book do |f|
   - if @book.errors.any?
     #error_explanation
       h2
@@ -16,7 +16,7 @@
     = f_publisher.text_field :name
   =f.submit t('New Book')
 
-= form_tag books_new_path do
+= form_tag books_index_path do
   = label_tag :keyword
   = text_field_tag 'keyword', @keyword
   = submit_tag "検索"

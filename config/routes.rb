@@ -1,4 +1,5 @@
 Tetsuzine::Application.routes.draw do
+  post "books/index"
   post 'books/new'
   resources :publishers
   resources :books
