@@ -32,14 +32,20 @@ class BooksController < ApplicationController
     respond_to do |format|
       format.html
     end
+  end
+
+  def search
+    @book = Book.new
     @keyword = params[:keyword]
     if @keyword.present?
       Amazon::Ecs.debug = true
       @res = Amazon::Ecs.item_search(params[:keyword], 
           :search_index => 'All', :response_group => 'Medium')
     else
+      render "new"
       return
     end
+    render "new"
   end
 
   # GET /books/1/edit

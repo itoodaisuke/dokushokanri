@@ -1,0 +1,11 @@
+= form_tag books_search_path do
+  = label_tag :keyword
+  = text_field_tag 'keyword', @keyword
+  = submit_tag "検索"
+
+- if @res.present?
+  - @res.items.each do |i|
+    li= link_to i.get('DetailPageURL') do
+      li= image_tag i.get('SmallImage/URL')
+    li= i.get('ASIN')
+    li= i.get('ItemAttributes/Title')
