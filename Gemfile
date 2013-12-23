@@ -17,7 +17,11 @@ gem 'amazon-ecs'
 
 group :development, :test do
       gem 'sqlite3'
+      gem 'pry'
+      gem 'pry-doc'
+      gem 'pry-debugger'
 end
+
 group :production do
       gem 'pg'
-end 
+end

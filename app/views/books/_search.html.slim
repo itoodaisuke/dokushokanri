@@ -3,7 +3,7 @@
   = text_field_tag 'keyword', @keyword
   = submit_tag "検索"
 
-table.table.table-striped.practices
+table.table.table-striped
   tbody
     th= t("IMAGE")
     / th= t("ASIN")
@@ -15,18 +15,15 @@ table.table.table-striped.practices
     th= t("PUBLICATIONDATE")
     th= t("CHOICE")
     - if @res.present?
-     - @datalist.each do |i|
-       tr
-         td= link_to i[:page] do
-           = image_tag i[:medium_image]
-         / td= i[:asin]
-         / td= i[:isbn]
-         td= i[:title]
-         td= i[:author]
-         td= i[:product_group]
-         td= i[:manufacturer]
-         td= i[:publication_date]
-         td
-           button.btn-lg.btn-primary
-             ="choice"
-
+      - @datalist.each_with_index do |i,n|
+        tr
+          td= link_to i[:page] do
+            = image_tag i[:medium_image]
+          / td= i[:asin]
+          / td= i[:isbn]
+          td= i[:title]
+          td= i[:author]
+          td= i[:product_group]
+          td= i[:manufacturer]
+          td= i[:publication_date]
+          td= link_to t("CHOICE"), books_search_path,:method => :post,:para => @datalist[n], class: 'btn btn-primary'

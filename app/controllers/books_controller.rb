@@ -24,36 +24,39 @@ class BooksController < ApplicationController
     respond_to do |format|
       format.html
     end
+
+    @dataparams = params[:para]
   end
 
   def search
+    binding.pry
+
     @book = Book.new
     @keyword = params[:keyword]
     if @keyword.present?
       Amazon::Ecs.debug = true
       @res = Amazon::Ecs.item_search(params[:keyword], 
-          :search_index => 'All', :response_group => 'Medium')
+         :search_index => 'All', :response_group => 'Medium')
       @datalist = []
       @res.items.each do |item|
-        element = item.get_element('ItemAttributes')
-        
-        @datalist << {
-          :page => item.get('DetailPageURL'),
-          :asin => item.get('ASIN'), 
-          :title => element.get("Title"), 
-          :isbn => element.get("ISBN"), 
-          :author => element.get_array("Author").join(", "), 
-          :product_group => element.get("ProductGroup"), 
-          :manufacturer => element.get("Manufacturer"), 
-          :publication_date => element.get("PublicationDate"), 
-          :small_image => item.get("SmallImage/URL"), 
-          :medium_image => item.get("MediumImage/URL"), 
-          :large_image => item.get("LargeImage/URL"), 
-          # URL, Width, Heightの要素を持っている
-          :small_image_hash => item.get_hash("SmallImage"), 
-          :medium_image_hash => item.get_hash("MediumImage"), 
-          :large_image_hash => item.get_hash("LargeImage")
-        }
+       element = item.get_element('ItemAttributes')
+       @datalist << {
+         :page => item.get('DetailPageURL'),
+         :asin => item.get('ASIN'), 
+         :title => element.get("Title"), 
+         :isbn => element.get("ISBN"), 
+         :author => element.get_array("Author").join(", "), 
+         :product_group => element.get("ProductGroup"), 
+         :manufacturer => element.get("Manufacturer"), 
+         :publication_date => element.get("PublicationDate"), 
+         :small_image => item.get("SmallImage/URL"), 
+         :medium_image => item.get("MediumImage/URL"), 
+         :large_image => item.get("LargeImage/URL"), 
+         # # URL, Width, Heightの要素を持っている
+         # :small_image_hash => item.get_hash("SmallImage"), 
+         # :medium_image_hash => item.get_hash("MediumImage"), 
+         # :large_image_hash => item.get_hash("LargeImage"),
+       }
       end
     else
       render "new"
