@@ -3,9 +3,30 @@
   = text_field_tag 'keyword', @keyword
   = submit_tag "検索"
 
-- if @res.present?
-  - @res.items.each do |i|
-    li= link_to i.get('DetailPageURL') do
-      li= image_tag i.get('SmallImage/URL')
-    li= i.get('ASIN')
-    li= i.get('ItemAttributes/Title')
+table.table.table-striped.practices
+  tbody
+    th= t("IMAGE")
+    / th= t("ASIN")
+    / th= t("ISBN")
+    th= t("TITLE")
+    th= t("AUTHOR")
+    th= t("PRODUCT_GROUP")
+    th= t("MANUFACTURER")
+    th= t("PUBLICATIONDATE")
+    th= t("CHOICE")
+    - if @res.present?
+     - @datalist.each do |i|
+       tr
+         td= link_to i[:page] do
+           = image_tag i[:medium_image]["URL"]
+         / td= i[:asin]
+         / td= i[:isbn]
+         td= i[:title]
+         td= i[:author]
+         td= i[:product_group]
+         td= i[:manufacturer]
+         td= i[:publication_date]
+         td
+           button.btn-lg.btn-primary
+             ="choice"
+
