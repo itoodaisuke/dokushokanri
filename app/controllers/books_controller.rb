@@ -46,11 +46,13 @@ class BooksController < ApplicationController
           :product_group => element.get("ProductGroup"), 
           :manufacturer => element.get("Manufacturer"), 
           :publication_date => element.get("PublicationDate"), 
-          
+          :small_image => item.get("SmallImage/URL"), 
+          :medium_image => item.get("MediumImage/URL"), 
+          :large_image => item.get("LargeImage/URL"), 
           # URL, Width, Heightの要素を持っている
-          :small_image => item.get_hash("SmallImage"), 
-          :medium_image => item.get_hash("MediumImage"), 
-          :large_image => item.get_hash("LargeImage")
+          :small_image_hash => item.get_hash("SmallImage"), 
+          :medium_image_hash => item.get_hash("MediumImage"), 
+          :large_image_hash => item.get_hash("LargeImage")
         }
       end
     else
