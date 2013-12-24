@@ -25,12 +25,9 @@ class BooksController < ApplicationController
       format.html
     end
 
-    @dataparams = params[:para]
   end
 
   def search
-    binding.pry
-
     @book = Book.new
     @keyword = params[:keyword]
     if @keyword.present?
@@ -65,6 +62,12 @@ class BooksController < ApplicationController
     render "new"
   end
 
+  def create_from_search
+    binding.pry
+    @book = Book.new(book_params)
+  end
+
+
   # GET /books/1/edit
   def edit
   end
@@ -73,7 +76,6 @@ class BooksController < ApplicationController
   # POST /books.json
   def create
     @book = Book.new(book_params)
-
     respond_to do |format|
       if @book.save
         format.html { redirect_to @book, notice: 'Book was successfully created.' }
@@ -117,6 +119,6 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:id, :title, :isbn, publishers_attributes: [:id, :name])
+      params.require(:book).permit(:id, :title, :isbn,:page,:asin,:author,:product_group,:manufacturer, :publication_date, :small_image, :medium_image,  :large_image, publishers_attributes: [:id, :name])
     end
 end

@@ -11,11 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131106063606) do
+ActiveRecord::Schema.define(version: 20131224230633) do
+
+  create_table "authors", force: true do |t|
+    t.integer  "book_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "authors", ["book_id"], name: "index_authors_on_book_id"
 
   create_table "books", force: true do |t|
     t.string "title"
+    t.string "asin"
     t.string "isbn"
+    t.string "s_image"
+    t.string "m_image"
+    t.string "l_image"
   end
 
   create_table "publishers", force: true do |t|
@@ -26,5 +39,16 @@ ActiveRecord::Schema.define(version: 20131106063606) do
   end
 
   add_index "publishers", ["book_id"], name: "index_publishers_on_book_id"
+
+  create_table "readings", force: true do |t|
+    t.integer  "book_id"
+    t.date     "started_on"
+    t.date     "finished_on"
+    t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "readings", ["book_id"], name: "index_readings_on_book_id"
 
 end

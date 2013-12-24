@@ -1,0 +1,21 @@
+= form_for @reading do |f|
+  - if @reading.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@reading.errors.count, "error")} prohibited this reading from being saved:"
+      ul
+        - @reading.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :book
+    = f.text_field :book
+  .field
+    = f.label :started_on
+    = f.date_select :started_on
+  .field
+    = f.label :finished_on
+    = f.date_select :finished_on
+  .field
+    = f.label :comment
+    = f.text_area :comment
+  .actions = f.submit 'Save'

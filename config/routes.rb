@@ -1,4 +1,8 @@
 Tetsuzine::Application.routes.draw do
+  resources :readings
+
+  resources :authors
+
   post 'books/new'
   post 'books/search'
   resources :publishers

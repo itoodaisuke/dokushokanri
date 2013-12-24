@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Book:
+  = @reading.book
+p
+  strong Started on:
+  = @reading.started_on
+p
+  strong Finished on:
+  = @reading.finished_on
+p
+  strong Comment:
+  = @reading.comment
+
+= link_to 'Edit', edit_reading_path(@reading)
+'|
+= link_to 'Back', readings_path

@@ -1,0 +1,25 @@
+h1 Listing readings
+
+table
+  tr
+    th Book
+    th Started on
+    th Finished on
+    th Comment
+    th
+    th
+    th
+
+  - @readings.each do |reading|
+    tr
+      td = reading.book
+      td = reading.started_on
+      td = reading.finished_on
+      td = reading.comment
+      td = link_to 'Show', reading
+      td = link_to 'Edit', edit_reading_path(reading)
+      td = link_to 'Destroy', reading, :confirm => 'Are you sure?', :method => :delete
+
+br
+
+= link_to 'New Reading', new_reading_path

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  book_id: 
+  started_on: 2013-12-25
+  finished_on: 2013-12-25
+  comment: MyText
+
+two:
+  book_id: 
+  started_on: 2013-12-25
+  finished_on: 2013-12-25
+  comment: MyText

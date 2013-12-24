@@ -5,23 +5,28 @@ h1= t('Listing books')
 table.table.table-striped
   thead
     tr
-      th Title
-      th Author
-      th Publisher
-      th ISBN
-      th Start
-      th End
-      th Summary
+      th= t("IMAGE")
+      th= t("ASIN")
+      th= t("ISBN")
+      th= t("TITLE")
+      th= t("AUTHOR")
+      th= t("PRODUCT_GROUP")
+      th= t("MANUFACTURER")
+      th= t("PUBLICATIONDATE")
+      th= t("CHOICE")
   tbody
     = content_tag_for :tr, @books do |book|
+      td= book.medium_image
+      td= book.asin
       td= book.title
-      td author
+      td= book.author
       td= book.publishers.map(&:name).join(',')
-      td= book.isbn
-      td
-      td
+      td= book.publication_date
       td= link_to 'Show', book
       td= link_to 'Edit', edit_book_path(book)
       td= link_to 'Destroy', book, method: :delete, data: {confirm: 'Are you sure?'}
 br
 = link_to t('New Book'), new_book_path
+
+li= @book
+
