@@ -1,10 +1,7 @@
 Tetsuzine::Application.routes.draw do
+  match 'books/new', :to => 'books#search', :via => :post, :as => 'resister'
   resources :readings
-
   resources :authors
-
-  post 'books/new'
-  post 'books/search'
   resources :publishers
   resources :books
   # The priority is based upon order of creation: first created -> highest priority.

@@ -9,9 +9,14 @@
           li= msg
   = f.label :title
   = f.text_field :title
+  = f.label :asin
+  = f.text_field :asin
   = f.label :isbn
   = f.text_field :isbn
   = f.fields_for :publishers do |f_publisher|
-    = f_publisher.label :name
+    = f_publisher.label :publisher
     = f_publisher.text_field :name
-  =f.submit t('New Book')
+  = f.fields_for :authors do |f_author|
+    = f_author.label :author
+    = f_author.text_field :name
+  = f.submit t('New Book')

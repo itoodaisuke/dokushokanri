@@ -20,6 +20,7 @@ class BooksController < ApplicationController
   def new
     @book = Book.new
     @book.publishers.build
+    @book.authors.build
 
     respond_to do |format|
       format.html
@@ -29,6 +30,9 @@ class BooksController < ApplicationController
 
   def search
     @book = Book.new
+    @book.publishers.build
+    @book.authors.build
+
     @keyword = params[:keyword]
     if @keyword.present?
       Amazon::Ecs.debug = true
@@ -44,11 +48,11 @@ class BooksController < ApplicationController
          :isbn => element.get("ISBN"), 
          :author => element.get_array("Author").join(", "), 
          :product_group => element.get("ProductGroup"), 
-         :manufacturer => element.get("Manufacturer"), 
+         :publisher => element.get("Manufacturer"), 
          :publication_date => element.get("PublicationDate"), 
-         :small_image => item.get("SmallImage/URL"), 
-         :medium_image => item.get("MediumImage/URL"), 
-         :large_image => item.get("LargeImage/URL"), 
+         :s_image => item.get("SmallImage/URL"), 
+         :m_image => item.get("MediumImage/URL"), 
+         :l_image => item.get("LargeImage/URL"), 
          # # URL, Width, Heightの要素を持っている
          # :small_image_hash => item.get_hash("SmallImage"), 
          # :medium_image_hash => item.get_hash("MediumImage"), 
@@ -61,12 +65,6 @@ class BooksController < ApplicationController
     end
     render "new"
   end
-
-  def create_from_search
-    binding.pry
-    @book = Book.new(book_params)
-  end
-
 
   # GET /books/1/edit
   def edit
@@ -119,6 +117,6 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:id, :title, :isbn,:page,:asin,:author,:product_group,:manufacturer, :publication_date, :small_image, :medium_image,  :large_image, publishers_attributes: [:id, :name])
+      params.require(:book).permit(:id, :title, :isbn,:page,:asin,:author,:product_group,:manufacturer, :publication_date, :small_image, :medium_image,  :large_image, publishers_attributes: [:id, :name], authors_attributes: [:id, :name])
     end
 end

@@ -16,10 +16,10 @@ table.table.table-striped
       th= t("CHOICE")
   tbody
     = content_tag_for :tr, @books do |book|
-      td= book.medium_image
+      td= book.m_image
       td= book.asin
       td= book.title
-      td= book.author
+      td= book.authors.map(&:name).join(',')
       td= book.publishers.map(&:name).join(',')
       td= book.publication_date
       td= link_to 'Show', book

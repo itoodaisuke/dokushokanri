@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131224230633) do
+ActiveRecord::Schema.define(version: 20131225032052) do
 
   create_table "authors", force: true do |t|
     t.integer  "book_id"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 20131224230633) do
     t.string "s_image"
     t.string "m_image"
     t.string "l_image"
+    t.date   "publication_date"
+    t.string "product_group"
   end
 
   create_table "publishers", force: true do |t|

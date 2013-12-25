@@ -1,4 +1,4 @@
-= form_tag books_search_path do
+= form_tag new_book_path do
   = label_tag :keyword
   = text_field_tag 'keyword', @keyword
   = submit_tag "検索"
@@ -18,12 +18,12 @@ table.table.table-striped
       - @datalist.each_with_index do |i,n|
         tr
           td= link_to i[:page] do
-            = image_tag i[:medium_image]
+            = image_tag i[:m_image]
           / td= i[:asin]
           / td= i[:isbn]
           td= i[:title]
           td= i[:author]
           td= i[:product_group]
-          td= i[:manufacturer]
+          td= i[:publisher]
           td= i[:publication_date]
-          td= link_to t("CHOICE"),{:controller => "books", :action => "create"},  {:book=> @datalist[n], class: 'btn btn-primary'}
+          td= link_to t("CHOICE"), { :method => :post },  { :book=> @datalist[n], class: 'btn btn-primary' }

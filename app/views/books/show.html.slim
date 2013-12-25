@@ -6,6 +6,11 @@ p
   strong ISBN:
   = @book.isbn
 p
+  strong Author:
+  ul
+    - @book.authors.each do |author|
+      li= author.name
+p
   strong Publisher:
   ul
     - @book.publishers.each do |publisher|
