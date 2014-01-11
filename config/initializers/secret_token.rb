@@ -9,4 +9,19 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Tetsuzine::Application.config.secret_key_base = 'f7c1b09a54cbdf61d313f3e5570ae14e864a50c31b75f8907f792d479f79b70f881480c4bbdb482ec4ebc6fddcbcbf9f3b2494877075718a42a6cc49515279d7'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+SampleApp::Application.config.secret_key_base = secure_token
