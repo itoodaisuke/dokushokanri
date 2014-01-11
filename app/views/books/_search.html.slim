@@ -26,4 +26,4 @@ table.table.table-striped
           td= i[:product_group]
           td= i[:publisher]
           td= i[:publication_date]
-          td= link_to t("CHOICE"), { :method => :post },  { :book=> @datalist[n], class: 'btn btn-primary' }
+          td= link_to t("CHOICE"), {action: :create, book: @datalist[n]}, {class: 'btn btn-primary' }
