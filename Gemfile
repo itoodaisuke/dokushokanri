@@ -16,12 +16,17 @@ gem 'simple_form', '~> 3.0.0'
 gem 'amazon-ecs'
 
 group :development, :test do
-      gem 'sqlite3'
-      gem 'pry'
-      gem 'pry-doc'
-      gem 'pry-debugger'
+  gem 'sqlite3'
+  gem 'pry'
+  gem 'pry-doc'
+  gem 'pry-debugger'
+  gem 'capybara', '~> 2.0.3'
+  gem 'capybara-webkit'
+  gem 'database_cleaner'
+  gem 'factory_girl_rails'
+  gem 'rspec-rails', '~> 2.13.0'
 end
 
 group :production do
-      gem 'pg'
+  gem 'pg'
 end
