@@ -14,6 +14,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'simple_form', '~> 3.0.0'
 gem 'amazon-ecs'
+gem 'devise'
+gem 'rails-i18n'
 
 group :development, :test do
   gem 'sqlite3'
