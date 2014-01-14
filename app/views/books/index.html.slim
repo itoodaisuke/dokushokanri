@@ -2,28 +2,8 @@ h1= t('Listing books')
 /= form_for @search_form, url: books_path(format: :json), remote: true, html: {method: :get} do |f|
   = f.search_field :q
   = f.submit t('search')
-table.table.table-striped
-  thead
-    tr
-      th= t("IMAGE")
-      th= t("ASIN")
-      th= t("ISBN")
-      th= t("TITLE")
-      th= t("AUTHOR")
-      th= t("PRODUCT_GROUP")
-      th= t("MANUFACTURER")
-      th= t("PUBLICATIONDATE")
-      th= t("CHOICE")
-  tbody
-    = content_tag_for :tr, @books do |book|
-      td= book.m_image
-      td= book.asin
-      td= book.title
-      td= book.authors.map(&:name).join(',')
-      td= book.publishers.map(&:name).join(',')
-      td= book.publication_date
-      td= link_to 'Show', book
-      td= link_to 'Edit', edit_book_path(book)
-      td= link_to 'Destroy', book, method: :delete, data: {confirm: 'Are you sure?'}
+=render 'list_book', books: @books
 br
-= link_to t('New Book'), new_book_path
+= link_to t('New Book'), new_book_path, class: 'btn btn-block btn-primary'
+= @bp
+

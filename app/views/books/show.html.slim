@@ -1,21 +1,5 @@
-p#notice= notice
-p
-  strong Title:
-  = @book.title
-p
-  strong ISBN:
-  = @book.isbn
-p
-  strong Author:
-  ul
-    - @book.authors.each do |author|
-      li= author.name
-p
-  strong Publisher:
-  ul
-    - @book.publishers.each do |publisher|
-      li= publisher.name
-
+h1= t('Show books')
+=render 'list_book', books: @books
 = link_to 'Edit', edit_book_path(@book)
 ||
 = link_to 'Back', books_path
