@@ -1,6 +1,8 @@
 Tetsuzine::Application.routes.draw do
   devise_for :users
   match 'books/new', :to => 'books#search', :via => :post, :as => 'resister'
+  match 'books/show', :to => 'books#create', :via => :post, :as => 'insert_db'
+  resources :users
   resources :readings
   resources :authors
   resources :publishers
