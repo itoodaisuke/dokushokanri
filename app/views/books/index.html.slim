@@ -1,9 +1,6 @@
 h1= t('Listing books')
-/= form_for @search_form, url: books_path(format: :json), remote: true, html: {method: :get} do |f|
-  = f.search_field :q
-  = f.submit t('search')
+=form_for @search_form, url: books_path(format: :json), remote: true, html: {method: :get} do |f|
+  =f.search_field :q
+  =f.submit t('search')
 =render 'list_book', books: @books
-br
-= link_to t('New Book'), new_book_path, class: 'btn btn-block btn-primary'
-= @bp
-
+=link_to t('New Book'), new_book_path, class: 'btn btn-block btn-primary'

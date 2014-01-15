@@ -3,18 +3,18 @@
   = text_field_tag 'keyword', @keyword
   = submit_tag "検索"
 
-table.table.table-striped
-  tbody
-    th= t("IMAGE")
-    / th= t("ASIN")
-    / th= t("ISBN")
-    th= t("TITLE")
-    th= t("AUTHOR")
-    th= t("PRODUCT_GROUP")
-    th= t("MANUFACTURER")
-    th= t("PUBLICATIONDATE")
-    th= t("CHOICE")
-    - if @res.present?
+- if @res.present?
+  table.table.table-striped
+    tbody
+      th= t("IMAGE")
+      / th= t("ASIN")
+      / th= t("ISBN")
+      th= t("TITLE")
+      th= t("AUTHOR")
+      th= t("PRODUCT_GROUP")
+      th= t("MANUFACTURER")
+      th= t("PUBLICATIONDATE")
+      th= t("CHOICE")
       - @datalist.each_with_index do |i,n|
         tr
           td= link_to i[:page] do

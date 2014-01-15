@@ -20,4 +20,4 @@ table.table.table-striped
       td= book.publication_date
       td= link_to 'Show', book
       td= link_to 'Edit', edit_book_path(book)
-      td= link_to 'Destroy', book, method: :delete, data: {confirm: 'Are you sure?'}
+      td= (link_to 'Destroy', book, method: :delete)

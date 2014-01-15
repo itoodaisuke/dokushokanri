@@ -1,21 +1,17 @@
 class BooksController < ApplicationController
-  # GET /books
-  # GET /books.json
+  before_action :set_book, only: [:show, :edit, :update, :destroy]
+
   def index
-    #@search_form = SearchForm.new params[:search_form]
+    @search_form = SearchForm.new params[:search_form]
     @books = Book.all
-    #if @search_form.q.present?
-     # @books = @books.titled @search_form.q
-    #end
-    @bp = book_params
+    if @search_form.q.present?
+      @books = @books.titled @search_form.q
+    end
   end
 
-  # GET /books/1
-  # GET /books/1.json
   def show
   end
 
-  # GET /books/new
   def new
     @book = Book.new
     @book.publishers.build
@@ -65,12 +61,9 @@ class BooksController < ApplicationController
     render "new"
   end
 
-  # GET /books/1/edit
   def edit
   end
 
-  # POST /books
-  # POST /books.json
   def create
     @book = Book.new(book_params)
     @book.publishers.build
@@ -86,8 +79,6 @@ class BooksController < ApplicationController
     end
   end
 
-  # PATCH/PUT /books/1
-  # PATCH/PUT /books/1.json
   def update
     respond_to do |format|
       if @book.update(book_params)
@@ -100,8 +91,6 @@ class BooksController < ApplicationController
     end
   end
 
-  # DELETE /books/1
-  # DELETE /books/1.json
   def destroy
     @book.destroy
     respond_to do |format|
@@ -111,6 +100,10 @@ class BooksController < ApplicationController
   end
 
   private
+    def set_book
+      @book = Book.find(params[:id])
+    end
+
     def book_params
       params.require(:book).permit(
         :page,
