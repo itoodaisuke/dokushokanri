@@ -100,10 +100,6 @@ class BooksController < ApplicationController
   end
 
   private
-    def set_book
-      @book = Book.find(params[:id])
-    end
-
     def book_params
       params.require(:book).permit(
         :page,
@@ -121,5 +117,9 @@ class BooksController < ApplicationController
         publishers_attributes: [:id, :name],
         authors_attributes: [:id, :name]
       )
+    end
+
+    def set_book
+      @book = Book.find(params[:id])
     end
 end
