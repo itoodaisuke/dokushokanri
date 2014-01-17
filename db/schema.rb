@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140113072957) do
+ActiveRecord::Schema.define(version: 20140117105759) do
+
+  create_table "amazonitems", force: true do |t|
+    t.string   "asin",             null: false
+    t.text     "detailpageurl"
+    t.string   "isbn"
+    t.string   "title"
+    t.string   "author"
+    t.string   "manufacturer"
+    t.string   "product_group"
+    t.string   "publication_date"
+    t.text     "s_image_url"
+    t.text     "m_image_url"
+    t.text     "l_image_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "authors", force: true do |t|
     t.integer  "book_id"

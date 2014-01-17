@@ -19,10 +19,11 @@
         tr
           td= link_to i[:page] do
             = image_tag i[:m_image]
-          td= i[:asin]
+          / td= i[:asin]
           / td= i[:isbn]
-          /td= i[:title]
+          td= i[:title]
           td= i[:author]
           td= i[:product_group]
           td= i[:publisher]
           td= i[:publication_date]
+          td= (link_to t("CHOICE"), create_book_path, {book: i, class: 'btn btn-primary'})

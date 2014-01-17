@@ -4,3 +4,4 @@ h1= t('Listing books')
   =f.submit t('search')
 =render 'list_book', books: @books
 =link_to t('New Book'), new_book_path, class: 'btn btn-block btn-primary'
+=get_amazon_item_data('4048869558').to_yaml
