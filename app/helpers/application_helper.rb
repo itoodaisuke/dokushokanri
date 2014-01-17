@@ -4,7 +4,7 @@ module ApplicationHelper
   # データベースからAmazon商品個別データを取得（無い/古い場合は登録/更新も行う）
   def get_amazon_item_data(asin)
     rec = Amazonitem.where(asin: "#{asin}").first
-    if !rec or rec.updated_at < DateTime.now - 0 # データがない、もしくは、半日以上経っている場合
+    if !rec or rec.updated_at < DateTime.now - 0.5 # データがない、もしくは、半日以上経っている場合
       unless rec
         rec = Amazonitem.new() unless rec
         rec.asin = asin

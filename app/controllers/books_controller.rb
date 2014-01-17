@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  include ApplicationHelper
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -17,20 +18,9 @@ class BooksController < ApplicationController
     @book.publishers.build
     @book.authors.build
 
-
-    respond_to do |format|
-      format.html
-    end
-
-  end
-
-  def new_result
-    @book = Book.new(params: :book)
-    @book.publishers.build
-    @book.authors.build
-
-    respond_to do |format|
-      format.html
+    @asin = params[:book][:asin].to_s
+    if @asin.present?
+      @rec = get_amazon_item_data(@asin)
     end
   end
 
@@ -59,10 +49,6 @@ class BooksController < ApplicationController
          :s_image => item.get("SmallImage/URL"), 
          :m_image => item.get("MediumImage/URL"), 
          :l_image => item.get("LargeImage/URL"), 
-         # # URL, Width, Heightの要素を持っている
-         # :small_image_hash => item.get_hash("SmallImage"), 
-         # :medium_image_hash => item.get_hash("MediumImage"), 
-         # :large_image_hash => item.get_hash("LargeImage"),
        }
       end
     else
@@ -77,37 +63,24 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
-    @book.publishers.build
-    @book.authors.build
-    respond_to do |format|
-      if @book.save
-        format.html { redirect_to @book, notice: 'Book was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @book }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @book.errors, status: :unprocessable_entity }
-      end
+    if @book.save
+      redirect_to @book, notice: 'Book was successfully created.'
+    else
+      render action: 'new'
     end
   end
 
   def update
-    respond_to do |format|
-      if @book.update(book_params)
-        format.html { redirect_to @book, notice: 'Book was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @book.errors, status: :unprocessable_entity }
-      end
+    if @book.update(book_params)
+      redirect_to @book, notice: 'Book was successfully updated.'
+    else
+      render action: 'edit'
     end
   end
 
   def destroy
     @book.destroy
-    respond_to do |format|
-      format.html { redirect_to books_url }
-      format.json { head :no_content }
-    end
+    redirect_to books_url
   end
 
   private
