@@ -13,14 +13,25 @@ class BooksController < ApplicationController
   end
 
   def new
-    @book = Book.new
+    @book = Book.new(book_params)
+    @book.publishers.build
+    @book.authors.build
+
+
+    respond_to do |format|
+      format.html
+    end
+
+  end
+
+  def new_result
+    @book = Book.new(params: :book)
     @book.publishers.build
     @book.authors.build
 
     respond_to do |format|
       format.html
     end
-
   end
 
   def search
@@ -101,7 +112,7 @@ class BooksController < ApplicationController
 
   private
     def book_params
-      params.require(:book).permit(
+      params.fetch(:book, {}).permit(
         :page,
         :id,
         :title,
