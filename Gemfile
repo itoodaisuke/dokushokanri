@@ -20,6 +20,7 @@ gem 'rails-i18n'
 group :development, :test do
   gem 'sqlite3'
   gem 'pry'
+  gem 'pry-rails'
   gem 'pry-doc'
   gem 'pry-debugger'
   gem 'capybara', '~> 2.0.3'
@@ -27,6 +28,8 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'rspec-rails', '~> 2.13.0'
+  gem 'hirb'
+  gem 'hirb-unicode'
 end
 
 group :production do

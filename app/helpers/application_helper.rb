@@ -15,21 +15,20 @@ module ApplicationHelper
       if amazon_res and amazon_res.first_item
         item = amazon_res.first_item
         element = item.get_element('ItemAttributes')
-        rec.detailpageurl = item.get('DetailPageURL'),
-        rec.isbn = element.get("ISBN"),
-        rec.title = element.get("Title"),
-        rec.author = element.get_array("Author").join(","),
-        rec.manufacturer = element.get("Manufacturer"),
-        rec.product_group = element.get("ProductGroup"),
-        rec.publication_date = element.get("PublicationDate"),
-        rec.s_image_url = item.get("SmallImage/URL"),
-        rec.m_image_url = item.get("MediumImage/URL"),
+        rec.detailpageurl = item.get('DetailPageURL')
+        rec.isbn = element.get("ISBN")
+        rec.title = element.get("Title")
+        rec.author = element.get_array("Author").join(",")
+        rec.manufacturer = element.get("Manufacturer")
+        rec.product_group = element.get("ProductGroup")
+        rec.publication_date = element.get("PublicationDate")
+        rec.s_image_url = item.get("SmallImage/URL")
+        rec.m_image_url = item.get("MediumImage/URL")
         rec.l_image_url = item.get("LargeImage/URL")
       else
         rec.detailpageurl = nil
       end
       # レコードの保存
-      rec.updated_at = DateTime.now
       rec.save
     end
     return rec
