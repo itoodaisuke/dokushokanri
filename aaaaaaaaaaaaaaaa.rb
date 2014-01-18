@@ -4,14 +4,22 @@
 
 book = @book
 
-ary = book["publishers_attributes"]["0"]["name"].split(',')
-
-if ary.size > 1
-  youso = {}
-  ary.size.times do |n|
-    youso.merge!({"#{n}" => {"name" => "#{ary[n]}"}})
-  end
+hoge =  []
+@book.keys.map do |e|
+  e.scan(/_attributes$/)
+  hoge << $` if $`
 end
-book["publishers_attributes"].merge!(youso)
 
-p book
+hoge.map do |f|
+
+  ary = book["#{f}_attributes"]["0"]["name"].split(',')
+
+  if ary.size > 1
+    youso = {}
+    ary.size.times do |n|
+      youso.merge!({"#{n}" => {"name" => "#{ary[n]}"}})
+    end
+  end
+  book["#{f}_attributes"].merge!(youso)
+end
+  p book
