@@ -11,15 +11,15 @@ rails4.0
 
 Mac OS X
 
-$ brew install qt
-$ gem install bundler
-$ git clone git@github.com:itoodaisuke/dokushokanri.git
-$ cd dokushokanri
-$ bundle
-$ rake db:setup
-$ rake secret
-$ rake amzn:generate
-$ rails s
-$ open http://localhost:3000
+    $ brew install qt
+    $ gem install bundler
+    $ git clone git@github.com:itoodaisuke/dokushokanri.git
+    $ cd dokushokanri
+    $ bundle
+    $ rake db:setup
+    $ rake secret
+    $ rake amzn:generate
+    $ rails s
+    $ open http://localhost:3000
 
 検索機能はAmazonAPIを使用するので、amzn.yamlは適宜修正すること。
