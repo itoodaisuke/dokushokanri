@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-ruby '2.0.0'
-
 gem 'rails', '4.0.0'
 gem 'bootstrap-sass', '~> 2.3.2.2'
 gem 'slim-rails'
@@ -28,8 +26,6 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'rspec-rails', '~> 2.13.0'
-  gem 'hirb'
-  gem 'hirb-unicode'
 end
 
 group :production do
