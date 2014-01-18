@@ -11,6 +11,7 @@ class BooksController < ApplicationController
   end
 
   def show
+    @req = request.fullpath
   end
 
   def new
@@ -59,6 +60,7 @@ class BooksController < ApplicationController
   end
 
   def edit
+    @edit = request.path_info
   end
 
   def create

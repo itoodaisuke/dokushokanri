@@ -6,7 +6,7 @@ class CreateAmazonitems < ActiveRecord::Migration
       t.column :isbn, :string
       t.column :title, :string
       t.column :author, :string
-      t.column :manufacturer, :string
+      t.column :publisher, :string
       t.column :product_group, :string
       t.column :publication_date, :string
       t.column :s_image_url, :text

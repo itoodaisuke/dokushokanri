@@ -1,6 +1,7 @@
 h1 Editing book
 = render 'form'
 ul.pager
-  li= link_to 'Back', books_path
-  li= link_to 'Show', @book
-
+  li.previous
+    = link_to 'Back', books_path
+  li.next
+    = link_to 'Show', @book

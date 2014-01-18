@@ -19,7 +19,7 @@ module ApplicationHelper
         rec.isbn = element.get("ISBN")
         rec.title = element.get("Title")
         rec.author = element.get_array("Author").join(",")
-        rec.manufacturer = element.get("Manufacturer")
+        rec.publisher= element.get("Manufacturer")
         rec.product_group = element.get("ProductGroup")
         rec.publication_date = element.get("PublicationDate")
         rec.s_image_url = item.get("SmallImage/URL")

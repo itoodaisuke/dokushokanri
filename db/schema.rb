@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20140117105759) do
     t.string   "isbn"
     t.string   "title"
     t.string   "author"
-    t.string   "manufacturer"
+    t.string   "publisher"
     t.string   "product_group"
     t.string   "publication_date"
     t.text     "s_image_url"
@@ -45,10 +45,9 @@ ActiveRecord::Schema.define(version: 20140117105759) do
     t.string   "s_image"
     t.string   "m_image"
     t.string   "l_image"
+    t.date     "publication_date"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.date     "publication_date"
-    t.string   "product_group"
   end
 
   create_table "publishers", force: true do |t|

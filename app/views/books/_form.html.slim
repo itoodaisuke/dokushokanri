@@ -1,3 +1,8 @@
+.alert.alert-info
+  button type="button" class="close" data-dismiss="alert"
+    ="x"
+  = "複数の項目は、','で区切ってね。"
+  = "例: xx出版,ooパブリッシング"
 = form_for @book do |f|
   - if @book.errors.any?
     #error_explanation
@@ -15,9 +20,14 @@
   = f.text_field :isbn, value: (@rec.isbn if @rec), class: 'input-xxlarge'
   = f.fields_for :publishers do |f_publisher|
     = f_publisher.label :publisher
-    = f_publisher.text_field :name, value: (@rec.manufacturer if @rec), class: 'input-xxlarge'
+    = f_publisher.text_field :name, value: (@rec.publisher if @rec), class: 'input-xxlarge'
   = f.fields_for :authors do |f_author|
     = f_author.label :author
     = f_author.text_field :name, value: (@rec.author if @rec), class: 'input-xxlarge'
   .form-actions
-    = f.submit t('New Book'), class: 'btn btn-primary'
+    -if @edit.present?
+      = f.submit t('Edit Book'), class: 'btn btn-primary'
+      = link_to t("Cancel"),@book,  class: 'btn'
+    -else
+      = f.submit t('New Book'), class: 'btn btn-primary'
+p= @book.authors.map(&:name).join(',')

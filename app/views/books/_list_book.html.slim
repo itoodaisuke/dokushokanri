@@ -6,8 +6,8 @@
         th= t("AUTHOR")
         th= t("PRODUCT_GROUP")
         th= t("CREATED_AT")
-        th= t("SHOW")
-        /th= t("EDIT")
+        th= t("SHOW") unless @req
+        th= t("EDIT") if @req
         th= t("DESTROY")
     tbody
       = content_tag_for :tr, books do |book|
@@ -15,6 +15,6 @@
         td= book.authors.map(&:name).join(',')
         td= book.publishers.map(&:name).join(',')
         td= book.created_at.strftime('%Y-%m-%d')
-        td= link_to 'Show', book
-        /td= link_to 'Edit', edit_book_path(book)
+        td= link_to 'Show', book unless @req
+        td= link_to 'Edit', edit_book_path(book) if @req
         td= (link_to 'Destroy', book, method: :delete)
