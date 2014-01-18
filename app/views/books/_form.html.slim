@@ -30,4 +30,3 @@
       = link_to t("Cancel"),@book,  class: 'btn'
     -else
       = f.submit t('New Book'), class: 'btn btn-primary'
-p= @book.authors.map(&:name).join(',')

@@ -64,7 +64,10 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.new(book_params)
+    @raw = book_params
+    plural_save(@raw)
+    @book = Book.new(@data)
+
     if @book.save
       redirect_to @book, notice: 'Book was successfully created.'
     else
