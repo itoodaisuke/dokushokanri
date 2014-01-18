@@ -27,9 +27,10 @@ ja:
   Title: "読書管理"
   Listing books: "登録した本の一覧"
   search: "検索"
-  New Book: "本を登録する"
-  Edit Book: "変更を保存する"
+  New Book: "本を登録"
+  Edit Book: "変更を保存"
   Cancel: "キャンセル"
+  Search books: "検索"
   IMAGE: イメージ
   ASIN: ASIN
   ISBN: ISBN

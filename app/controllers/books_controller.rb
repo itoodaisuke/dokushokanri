@@ -61,6 +61,7 @@ class BooksController < ApplicationController
 
   def edit
     @edit = request.path_info
+    @rec = @book
   end
 
   def create

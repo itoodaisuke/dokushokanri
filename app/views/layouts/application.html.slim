@@ -8,6 +8,5 @@ html
   body
     = render 'layouts/header'
     .container
-      .starter-template
-        = yield
+      = yield
       = debug(params) if Rails.env.development?

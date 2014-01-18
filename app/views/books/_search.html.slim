@@ -1,6 +1,7 @@
+h2= t('Search books')
 = form_tag (new_book_path), :html => {:class => 'well form-search'} do
   = label_tag :keyword
-  = text_field_tag 'keyword', @keyword
+  = text_field_tag 'keyword', @keyword, class: 'input-xxlarge'
   .input-append
     = submit_tag "検索", class: 'btn'
 - if @res.present?

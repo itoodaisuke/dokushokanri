@@ -13,15 +13,15 @@
         - @book.errors.full_messages.each do |msg|
           li= msg
   = f.label :title
-  = f.text_field :title, value: (@rec.title if @rec), class: 'input-xxlarge'
+  = f.text_field :title, value: (), class: 'input-xxlarge'
   = f.label :asin
-  = f.text_field :asin, value: (@rec.asin if @rec), class: 'input-xxlarge'
+  = f.text_field :asin, value: (), class: 'input-xxlarge'
   = f.label :isbn
-  = f.text_field :isbn, value: (@rec.isbn if @rec), class: 'input-xxlarge'
+  = f.text_field :isbn, value: (), class: 'input-xxlarge'
   = f.fields_for :publishers do |f_publisher|
     = f_publisher.label :publisher
-    = f_publisher.text_field :name, value: (@rec.publisher if @rec), class: 'input-xxlarge'
+    = f_publisher.text_field :name, value: (), class: 'input-xxlarge'
   = f.fields_for :authors do |f_author|
     = f_author.label :author
-    = f_author.text_field :name, value: (@rec.author if @rec), class: 'input-xxlarge'
-  = f.submit t('New Book'), class: 'btn btn-block btn-primary'
+    = f_author.text_field :name, value: (), class: 'input-xxlarge'
+  = f.submit t('Edit Book'), class: 'btn btn-block btn-primary'
