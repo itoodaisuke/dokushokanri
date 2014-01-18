@@ -48,8 +48,8 @@ module ApplicationHelper
         ary.size.times do |n|
           youso.merge!({"#{n}" => {"name" => "#{ary[n]}"}})
         end
+        book["#{f}_attributes"].merge!(youso)
       end
-      book["#{f}_attributes"].merge!(youso)
     end
     return book
   end
