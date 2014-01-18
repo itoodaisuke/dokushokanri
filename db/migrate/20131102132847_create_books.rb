@@ -7,6 +7,8 @@ class CreateBooks < ActiveRecord::Migration
       t.string :s_image
       t.string :m_image
       t.string :l_image
+
+      t.timestamps
     end
   end
 end

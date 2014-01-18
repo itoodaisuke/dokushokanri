@@ -39,14 +39,16 @@ ActiveRecord::Schema.define(version: 20140117105759) do
   add_index "authors", ["book_id"], name: "index_authors_on_book_id"
 
   create_table "books", force: true do |t|
-    t.string "title"
-    t.string "asin"
-    t.string "isbn"
-    t.string "s_image"
-    t.string "m_image"
-    t.string "l_image"
-    t.date   "publication_date"
-    t.string "product_group"
+    t.string   "title"
+    t.string   "asin"
+    t.string   "isbn"
+    t.string   "s_image"
+    t.string   "m_image"
+    t.string   "l_image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.date     "publication_date"
+    t.string   "product_group"
   end
 
   create_table "publishers", force: true do |t|
