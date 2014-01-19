@@ -6,6 +6,7 @@
 
 ruby2.0.0
 rails4.0
+sqlite(productionはmysqlなので、ローカルもmysqlにするかも）
 
 ### インストール
 
