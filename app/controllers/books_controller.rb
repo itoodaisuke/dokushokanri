@@ -4,7 +4,8 @@ class BooksController < ApplicationController
 
   def index
     @search_form = SearchForm.new params[:search_form]
-    @books = current_user.books.all
+    @user = current_user.books.all
+    @books = current_user.books.order('id desc').limit(5)
     if @search_form.q.present?
       @books = @books.titled @search_form.q
     end
@@ -68,6 +69,7 @@ class BooksController < ApplicationController
     raw = book_params
     data = plural_save(raw)
     @book = Book.new(data)
+    @book.user = current_user
 
     if @book.save
       redirect_to @book, notice: 'Book was successfully created.'
@@ -92,6 +94,7 @@ class BooksController < ApplicationController
   private
     def book_params
       params.fetch(:book, {}).permit(
+        :user_id,
         :page,
         :id,
         :title,

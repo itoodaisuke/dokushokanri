@@ -1,6 +1,6 @@
 class Book < ActiveRecord::Base
   scope :titled, ->(q) { where 'title like ?', "%#{q}%" }
-  belongs_to :users
+  belongs_to :user
   has_many :publishers, dependent: :destroy
   has_many :authors, dependent: :destroy
   has_many :readings, dependent: :destroy
