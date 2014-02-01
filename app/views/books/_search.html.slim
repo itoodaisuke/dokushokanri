@@ -4,7 +4,7 @@ h2= t('Search books')
   = text_field_tag 'keyword', @keyword, class: 'input-xxlarge'
   = submit_tag "検索", class: 'btn btn-block btn-primary'
 - if @res.present?
-  .container
+  .table-responsive
     table.table.table-striped
       tbody
         th= t("IMAGE")
