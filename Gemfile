@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.0.0'
-gem 'bootstrap-sass', '~> 2.3.2.2'
+gem 'bootstrap-sass'
 gem 'slim-rails'
 gem 'jquery-turbolinks'
 gem 'sass-rails', '~> 4.0.0'

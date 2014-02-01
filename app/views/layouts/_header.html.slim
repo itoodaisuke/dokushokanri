@@ -1,14 +1,16 @@
-header.navbar
-  .navbar-inner
-    .brand= link_to t('Title'), root_path
-    ul.nav.pull-left
-      li= link_to t('New Book'), new_book_path
-      li= link_to t('Users'), users_path
-    ul.nav.pull-right
-      - if user_signed_in?
-        li= link_to current_user.email,'',:class => 'navbar-link'
-        li= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link'
-        li= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'
-      - else
-        li= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'
-        li= link_to "Login", new_user_session_path, :class => 'navbar-link'
+.navbar
+  .container
+    .navbar-header
+      .navbar-brand= link_to t('Title'), root_path
+    .collapse.navbar-collapse
+      ul.nav.navbar-nav
+        li= link_to t('New Book'), new_book_path
+        li= link_to t('Users'), users_path
+      ul.nav.navbar-nav.pull-right
+        - if user_signed_in?
+          li= link_to current_user.email,'',:class => 'navbar-link'
+          li= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link'
+          li= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'
+        - else
+          li= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'
+          li= link_to "Login", new_user_session_path, :class => 'navbar-link'

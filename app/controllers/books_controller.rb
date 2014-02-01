@@ -4,7 +4,7 @@ class BooksController < ApplicationController
 
   def index
     @search_form = SearchForm.new params[:search_form]
-    @books = Book.all
+    @books = current_user.books.all
     if @search_form.q.present?
       @books = @books.titled @search_form.q
     end
