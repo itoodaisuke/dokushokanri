@@ -1,20 +1,21 @@
 -if books.present?
-  table.table.table-striped
-    thead
-      tr
-        th= t("TITLE")
-        th= t("AUTHOR")
-        th= t("MANUFACTURER")
-        th= t("CREATED_AT")
-        th= t("SHOW") unless @req
-        th= t("EDIT") if @req
-        th= t("DESTROY")
-    tbody
-      = content_tag_for :tr, books do |book|
-        td= book.title
-        td= book.authors.map(&:name).join(',')
-        td= book.publishers.map(&:name).join(',')
-        td= book.created_at.strftime('%Y-%m-%d')
-        td= link_to 'Show', book unless @req
-        td= link_to 'Edit', edit_book_path(book) if @req
-        td= (link_to 'Destroy', book, method: :delete)
+  .container
+    table.table.table-striped
+      thead
+        tr
+          th= t("TITLE")
+          th= t("AUTHOR")
+          th= t("MANUFACTURER")
+          th= t("CREATED_AT")
+          th= t("SHOW") unless @req
+          th= t("EDIT") if @req
+          th= t("DESTROY")
+      tbody
+        = content_tag_for :tr, books do |book|
+          td= book.title
+          td= book.authors.map(&:name).join(',')
+          td= book.publishers.map(&:name).join(',')
+          td= book.created_at.strftime('%Y-%m-%d')
+          td= link_to 'Show', book unless @req
+          td= link_to 'Edit', edit_book_path(book) if @req
+          td= (link_to 'Destroy', book, method: :delete)
