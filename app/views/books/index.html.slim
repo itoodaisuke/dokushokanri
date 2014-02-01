@@ -5,5 +5,3 @@ h1= t('Listing books')
     =f.submit t('search')
 =render 'list_book', books: @books
 =link_to t('New Book'), new_book_path, class: 'btn btn-block btn-primary'
-
-p= @user.to_json
