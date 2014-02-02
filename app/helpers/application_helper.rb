@@ -38,7 +38,7 @@ module ApplicationHelper
     hoge =  []
     book.keys.map do |e|
       e.scan(/_attributes$/)
-      hoge << $` if $`
+      hoge << $` if $` && $` != "readings"
     end
 
     hoge.map do |f|

@@ -15,6 +15,7 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
     @book.publishers.build
     @book.authors.build
+    @book.readings.build
 
     @asin = params[:book][:asin].to_s
     if @asin.present?
@@ -26,6 +27,7 @@ class BooksController < ApplicationController
     @book = Book.new
     @book.publishers.build
     @book.authors.build
+    @book.readings.build
 
     @keyword = params[:keyword]
     if @keyword.present?
@@ -104,7 +106,8 @@ class BooksController < ApplicationController
         :m_image,
         :l_image,
         publishers_attributes: [:id, :name],
-        authors_attributes: [:id, :name]
+        authors_attributes: [:id, :name],
+        readings_attributes: [:id, :comment, :started_on, :finished_on]
       )
     end
 

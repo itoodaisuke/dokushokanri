@@ -12,7 +12,6 @@
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       ul.nav.navbar-nav
         li= link_to t('New Book'), new_book_path
-        li= link_to t('Users'), users_path
       ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           li= link_to current_user.email, edit_user_registration_path,:class => 'navbar-link'

@@ -6,6 +6,7 @@
           th= t("TITLE")
           th= t("AUTHOR")
           th= t("MANUFACTURER")
+          th= t("COMMNET")
           th= t("CREATED_AT")
           th= t("SHOW") unless @req
           th= t("EDIT") if @req
@@ -15,6 +16,7 @@
           td= book.title
           td= book.authors.map(&:name).join(',')
           td= book.publishers.map(&:name).join(',')
+          td= book.readings.map(&:comment).join(',')
           td= book.created_at.strftime('%Y-%m-%d')
           td= link_to 'Show', book, class: 'btn btn-info' unless @req
           td= link_to 'Edit', edit_book_path(book), class: 'btn btn-info' if @req
