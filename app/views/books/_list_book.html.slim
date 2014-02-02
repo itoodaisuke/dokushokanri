@@ -16,6 +16,6 @@
           td= book.authors.map(&:name).join(',')
           td= book.publishers.map(&:name).join(',')
           td= book.created_at.strftime('%Y-%m-%d')
-          td= link_to 'Show', book unless @req
-          td= link_to 'Edit', edit_book_path(book) if @req
-          td= (link_to 'Destroy', book, method: :delete)
+          td= link_to 'Show', book, class: 'btn btn-info' unless @req
+          td= link_to 'Edit', edit_book_path(book), class: 'btn btn-info' if @req
+          td= (link_to 'Destroy', book, method: :delete, class: 'btn btn-danger')

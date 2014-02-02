@@ -1,7 +1,3 @@
 h1= t('Listing books')
-- if @books.present?
-  =form_for @search_form, url: books_path, remote: true, html: {method: :get} do |f|
-    =f.search_field :q
-    =f.submit t('search')
 =render 'list_book', books: @books
 =link_to t('New Book'), new_book_path, class: 'btn btn-block btn-primary'
