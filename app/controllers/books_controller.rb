@@ -3,12 +3,8 @@ class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 
   def index
-    @search_form = SearchForm.new params[:search_form]
     @user = current_user.books.all
     @books = current_user.books.order('id desc').limit(5)
-    if @search_form.q.present?
-      @books = @books.titled @search_form.q
-    end
   end
 
   def show
