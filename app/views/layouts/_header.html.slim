@@ -1,12 +1,19 @@
-.navbar
-  .container
+.navbar.navbar-default.navbar-fixed-top  role="navigation"
+  .container-fluid
+    /! Brand and toggle get grouped for better mobile display
     .navbar-header
+      button.navbar-toggle data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button"
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
       .navbar-brand= link_to t('Title'), root_path
-    .collapse.navbar-collapse
+    /! Collect the nav links, forms, and other content for toggling
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
       ul.nav.navbar-nav
         li= link_to t('New Book'), new_book_path
         li= link_to t('Users'), users_path
-      ul.nav.navbar-nav.pull-right
+      ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           li= link_to current_user.email, edit_user_registration_path,:class => 'navbar-link'
           li= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'

@@ -8,23 +8,23 @@ h2= t('Search books')
     table.table.table-striped
       tbody
         th= t("IMAGE")
-        / th= t("ASIN")
-        / th= t("ISBN")
-        th= t("TITLE")
+        th.hidden-xs= t("ASIN")
+        th.hidden-xs= t("ISBN")
+        th.maxwidth= t("TITLE")
         th= t("AUTHOR")
-        th= t("PRODUCT_GROUP")
-        th= t("MANUFACTURER")
-        th= t("PUBLICATIONDATE")
+        th.hidden-xs= t("PRODUCT_GROUP")
+        th.hidden-xs= t("MANUFACTURER")
+        th.hidden-xs= t("PUBLICATIONDATE")
         th= t("CHOICE")
         - @datalist.each_with_index do |i,n|
           tr
             td= link_to i[:page] do
-              = image_tag i[:m_image]
-            / td= i[:asin]
-            / td= i[:isbn]
+              = image_tag i[:s_image]
+            td.hidden-xs= i[:asin]
+            td.hidden-xs= i[:isbn]
             td= i[:title]
             td= i[:author]
-            td= i[:product_group]
-            td= i[:publisher]
-            td= i[:publication_date]
+            td.hidden-xs= i[:product_group]
+            td.hidden-xs= i[:publisher]
+            td.hidden-xs= i[:publication_date]
             td= (link_to t("CHOICE"),new_book_path(book: {asin: i[:asin]}),{class: 'btn btn-primary'})
